@@ -12,7 +12,7 @@ var minifyhtml  = require('gulp-htmlmin');       // minify HTML
 var stylus      = require('gulp-stylus');        // stylus
 var jade        = require('gulp-jade');          // Jade templates
 
-// path configuration --------------------------------------------------------
+// path configuration ---------------------------------------------------------
 
 var paths =
 {
@@ -34,11 +34,11 @@ var paths =
     }
 };
 
-// options configuration -----------------------------------------------------
+// options configuration ------------------------------------------------------
 
 var config =
 {
-    // browsersync -----------------------------------------------------------
+    // browsersync ------------------------------------------------------------
     // http://www.browsersync.io/docs/options/
     browsersync:                                 // config.browsersync
     {
@@ -69,9 +69,9 @@ var config =
         logLevel                : 'info',        // info, debug, warn, silent
         logPrefix               : '',            // console logging prefix
         logConnections          : true,          // display connected browsers
-        logFileChanges          : true,          // display info about changes
-        logSnippet              : true,          // log the snippet to console
-        tunnel                  : true,          // bool/localtunnel.me prefix
+        logFileChanges          : true,          // display info about file changes
+        logSnippet              : true,          // log the snippet to the console
+        tunnel                  : true,          // bool or localtunnel.me prefix
         online                  : undefined,     // bool to check connectivity
         open                    : false,         // bool, external, tunnel
         browser                 : 'google chrome', // array of browsers
@@ -80,37 +80,37 @@ var config =
         scrollProportionally    : true,          // sync viewport to top
         scrollThrottle          : 0,             // scroll event interval (ms)
         reloadDelay             : 0,             // pause before reload (ms)
-        injectChanges           : true,          // inject CSS changes/refresh
+        injectChanges           : true,          // inject CSS changes or refresh
         startPath               : null,          // path to open browser at
         minify                  : false,         // minify client side JS
-        host                    : null,          // host override (string IP)
-        codeSync                : true,          // change events to browsers
-        timestamps              : true           // append timestamps to files
+        host                    : null,          // override host detection (string IP)
+        codeSync                : true,          // send file-change events to browsers
+        timestamps              : true           // append timestamps to injected files
     },
-    // minifycss -------------------------------------------------------------
+    // minifycss --------------------------------------------------------------
     // https://github.com/jonathanepollack/gulp-minify-css
     minifycss:                                   // config.minifycss
     {
         advanced                : true,          // advanced optimizations
         aggressiveMerging       : true,          // aggressive merging of properties
-        benchmark               : false,         // time spent cleaning up
+        benchmark               : false,         // measures time spent cleaning up
         compatibility           : false,         // compatibility mode
         debug                   : false,         // minification statistics
-        inliner                 : false,         // @import inliner hash
+        inliner                 : false,         // hash of options for @import inliner
         keepBreaks              : false,         // keep line breaks
-        keepSpecialComments     : false,         // * all, 1 first, 0 none
+        keepSpecialComments     : false,         // * = all, 1 = first, 0 = none
         processImport           : false,         // process @import rules
         rebase                  : false,         // URL rebasing
-        relativeTo              : null,          // abs @import rules path
-        restructuring           : false,         // adv optimizations
-        root                    : null,          // rel @import rules path
+        relativeTo              : null,          // path to resolve rel @import rules/URLs
+        restructuring           : false,         // restructuring in adv optimizations
+        root                    : null,          // path to resolve abs @import rules/URLs
         roundingPrecision       : 2,             // default 2, disable -1
         shorthandCompacting     : true,          // shorthand compacting
         sourceMap               : false,         // exposes source map
-        sourceMapInlineSources  : false,         // source map inline sources
-        target                  : null           // rebase path
+        sourceMapInlineSources  : false,         // inline sources inside a source map
+        target                  : null           // path to which rebase all URLs
     },
-    // imagemin --------------------------------------------------------------
+    // imagemin ---------------------------------------------------------------
     // https://github.com/sindresorhus/gulp-imagemin
     imagemin:                                    // config.imagemin
     {
@@ -121,51 +121,51 @@ var config =
         svgoPlugins: [{removeViewBox: false}],   // svgo plugins
         use: [pngquant()]                        // additional plugins
     },
-    // stylus ----------------------------------------------------------------
+    // stylus -----------------------------------------------------------------
     // https://github.com/stevelacy/gulp-stylus
     stylus:                                      // config.stylus
     {},
-    // jade ------------------------------------------------------------------
+    // jade -------------------------------------------------------------------
     // http://jade-lang.com/api/
     jade:
     {
         pretty                  : true
     },
-    // uglify ----------------------------------------------------------------
+    // uglify -----------------------------------------------------------------
     // https://github.com/terinjokes/gulp-uglify
     uglify:
     {
         preserveComments               : 'all'  // some, all, function()
     },
-    // minifyhtml ------------------------------------------------------------
+    // minifyhtml -------------------------------------------------------------
     // https://github.com/kangax/html-minifier
     minifyhtml:
     {
         removeComments                 : false,  // remove comments
-        removeCommentsFromCDATA        : false,  // comments (scripts/styles)
-        removeCDATASectionsFromCDATA   : false,  // CDATA (scripts/styles)
+        removeCommentsFromCDATA        : false,  // remove comments from scripts + styles
+        removeCDATASectionsFromCDATA   : false,  // remove CDATA from scripts + styles
         collapseWhitespace             : true,   // remove white space
-        conservativeCollapse           : false,  // white space -> 1 space
-        preserveLineBreaks             : false,  // white space -> 1 line
-        collapseBooleanAttributes      : false,  // remove bools attrib values
-        removeAttributeQuotes          : false,  // remove attribs quotes
-        removeRedundantAttributes      : false,  // remove default's attribs
-        preventAttributesEscaping      : false,  // no attrib values escaping
-        useShortDoctype                : true,   // doctype -> HTML5 doctype
-        removeEmptyAttributes          : false,  // remove whitespace attribs
-        removeScriptTypeAttributes     : false,  // remove script type attrib
-        removeStyleLinkTypeAttributes  : false,  // remove style type attrib
+        conservativeCollapse           : false,  // remove white space to 1 space
+        preserveLineBreaks             : false,  // remove white space to 1 line
+        collapseBooleanAttributes      : false,  // remove attrib values from bools
+        removeAttributeQuotes          : false,  // remove quotes around attribs
+        removeRedundantAttributes      : false,  // remove attribs when value is default
+        preventAttributesEscaping      : false,  // prevent attrib values escaping
+        useShortDoctype                : true,   // replaces doctype with HTML5 doctype
+        removeEmptyAttributes          : false,  // remove attribs with whitespace values
+        removeScriptTypeAttributes     : false,  // remove 'type="text/javascript"'
+        removeStyleLinkTypeAttributes  : false,  // remove 'type="test/css"'
         removeOptionalTags             : false,  // remove unrequired tags
         removeIgnored                  : false,  // remove <%, %>, <?, ?>
         removeEmptyElements            : false,  // remove empty elements
         lint                           : false,  // toggle linting
         keepClosingSlash               : false,  // keep trailing slash on singleton elems
-        caseSensitive                  : false,  // case sensitive attribs
-        minifyJS                       : false,  // UglifyJS minification
-        minifyCSS                      : false,  // clean-css minification
-        minifyURLs                     : false,  // URL minification
-        ignoreCustomComments           : [],     // ignore comments (regex)
-        processScripts                 : [],     // script type minification
+        caseSensitive                  : false,  // treat attribs as case sensitive
+        minifyJS                       : false,  // minify JavaScript using UglifyJS
+        minifyCSS                      : false,  // minify CSS using clean-css
+        minifyURLs                     : false,  // minify URLs
+        ignoreCustomComments           : [],     // ignore comments array of regexes
+        processScripts                 : [],     // minify types of script elements
         maxLineLength                  : undefined // maximum line length
     }
 };
@@ -234,26 +234,26 @@ gulp.task('clean', function() {
 
 gulp.task('info', function() {
     console.log('');
-    console.log('                  ,╥╦╓                                    ');
-    console.log('                ╦╬╙` ╙╬           ,╬                      ');
-    console.log('              ╓╬╨                 ╬²                      ');
-    console.log('             ╔╬²    ╓╕           ╬╜                       ');
-    console.log('            ╓╬*    ,╬²  ╬╛  ╔å  ╬╝   ╬╓≡╨╬╬               ');
-    console.log('            ╬╬    ╔╬╝  ╬╜  ╔╬  ╠╝  ,╫╬^ ╔å .╦*            ');
-    console.log('            ╬╬,╓╦╝╠╬  ╔╬,╓╝╠╕,╥╬,╦#╠å ┌╬▒╓#╙              ');
-    console.log('             ╙╙^  ╬^   "^` ^"` "^`╦╬  `╙^`                ');
-    console.log('                  ²              ╦╬                       ');
-    console.log('                                -╝`                       ');
-    console.log('╔════════════════════════════════════════════════════════╗');
-    console.log('║                  Available commands:                   ║');
-    console.log('╟────────────────────────────────────────────────────────╢');
-    console.log('║             gulp           gulp minify                 ║');
-    console.log('║             gulp clean     gulp minifycss              ║');
-    console.log('║             gulp jade      gulp minifyhtml             ║');
-    console.log('║             gulp stylus    gulp uglify                 ║');
-    console.log('║             gulp scripts   gulp imagemin               ║');
-    console.log('║             gulp serve                                 ║');
-    console.log('╚════════════════════════════════════════════════════════╝');
+    console.log('                   ,╥╦╓                                     ');
+    console.log('                 ╦╬╙` ╙╬           ,╬                       ');
+    console.log('               ╓╬╨                 ╬²                       ');
+    console.log('              ╔╬²    ╓╕           ╬╜                        ');
+    console.log('             ╓╬*    ,╬²  ╬╛  ╔å  ╬╝   ╬╓≡╨╬╬                ');
+    console.log('             ╬╬    ╔╬╝  ╬╜  ╔╬  ╠╝  ,╫╬^ ╔å .╦*             ');
+    console.log('             ╬╬,╓╦╝╠╬  ╔╬,╓╝╠╕,╥╬,╦#╠å ┌╬▒╓#╙               ');
+    console.log('              ╙╙^  ╬^   "^` ^"` "^`╦╬  `╙^`                 ');
+    console.log('                   ²              ╦╬                        ');
+    console.log('                                 -╝`                        ');
+    console.log('╔══════════════════════════════════════════════════════════╗');
+    console.log('║                   Available commands:                    ║');
+    console.log('╟-─────────────────────────────────────────────────────────╢');
+    console.log('║              gulp           gulp minify                  ║');
+    console.log('║              gulp clean     gulp minifycss               ║');
+    console.log('║              gulp jade      gulp minifyhtml              ║');
+    console.log('║              gulp stylus    gulp uglify                  ║');
+    console.log('║              gulp scripts   gulp imagemin                ║');
+    console.log('║              gulp serve                                  ║');
+    console.log('╚══════════════════════════════════════════════════════════╝');
     console.log('');
 });
 
@@ -263,7 +263,7 @@ gulp.task('serve', function() {
     gulp.watch(paths.source.styles, ['stylus']);
 });
 
-// main tasks ----------------------------------------------------------------
+// main tasks -----------------------------------------------------------------
 
 gulp.task('minify', ['minifycss', 'minifyhtml', 'uglify', 'imagemin']);
 gulp.task('default', ['info', 'clean', 'jade', 'stylus', 'scripts', 'serve']);
