@@ -1,4 +1,8 @@
-![Gulp](https://raw.githubusercontent.com/sjaakvandenberg/gulp-start/master/source/images/gulp.svg)
+<p align="center">
+  <a href="http://gulpjs.com">
+    <img height="257" width="114" src="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png">
+  </a>
+</p>
 
 This is a Gulp template that includes ES6 support, Jade templating, Stylus
 stylesheets, JS concatenation, JS, CSS, PNG, JPEG, GIF and SVG minification
