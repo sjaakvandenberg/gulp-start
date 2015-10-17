@@ -1,4 +1,4 @@
-![Gulp](source/images/gulp.svg)
+![Gulp](https://raw.githubusercontent.com/sjaakvandenberg/gulp-start/master/source/images/gulp.svg)
 
 This is a Gulp template that includes ES6 support, Jade templating, Stylus
 stylesheets, JS concatenation, JS, CSS, PNG, JPEG, GIF and SVG minification
