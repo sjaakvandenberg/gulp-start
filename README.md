@@ -28,4 +28,4 @@ and is served using Browsersync.
 
 For more information, see the comments in `gulpfile.js`.
 
-Made by [https://twitter.com/svdb](@svdb).
+Made by https://twitter.com/svdb.
