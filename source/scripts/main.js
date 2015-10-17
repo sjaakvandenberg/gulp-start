@@ -1,1 +1,2 @@
-console.log("Hello from main.js");
+let flavor = 'spicy';
+console.log(`This main.js sure is ${flavor}!`);
