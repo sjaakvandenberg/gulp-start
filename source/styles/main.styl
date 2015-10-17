@@ -1,9 +1,84 @@
+@import '_fonts'
+
+*
+  margin 0
+  padding 0
+  box-sizing border-box
+
+html
+  box-sizing border-box
+  height calc(100%)
+  font-size 17px
+
 body
-    color: #121315;
-    background: #fafafa;
+  background #eee
+  display flex
+  color #222
+  font-family 'Open Sans'
+  line-height 1.5
+
+main
+  margin 1 rem
+  padding 32px
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  color #D34A47
+  font-family 'Merriweather'
 
 h1
-    color: #444
+  font-size 2rem
 
-p
-    color: #c33
+h2
+  font-size 1.75rem
+
+p,
+li
+  font-size 1.2rem
+
+p,
+li:last-child
+  padding-bottom 1rem
+
+a
+  color #05f
+  text-decoration none
+  &:hover
+    text-decoration underline
+
+ul
+  font-size 1rem
+  list-style circle inside
+  li
+    text-align left
+    ul
+      padding-left 1.4rem
+      list-style square inside
+      li
+        text-align left
+
+pre
+  background hsla(0, 0, 50%, 0.2)
+  border-radius 4px
+  font-family 'Fira Mono'
+  font-size 1rem
+  padding 16px
+  margin-bottom 1rem
+  white-space pre-wrap
+  word-wrap break-word
+
+:not(pre) > code
+  background hsla(0, 0, 50%, 0.4)
+  border-radius 2px
+  padding 3px
+  word-wrap normal
+
+img.logo
+  background hsla(0, 0, 50%, 0.1)
+  border-radius 50%
+  height auto
+  width 144px
