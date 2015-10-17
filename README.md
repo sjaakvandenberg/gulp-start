@@ -1,3 +1,5 @@
+![Gulp](images/gulp.svg)
+
 This is a Gulp template that includes ES6 support, Jade templating, Stylus
 stylesheets, JS concatenation, JS, CSS, PNG, JPEG, GIF and SVG minification
 and is served using Browsersync.
